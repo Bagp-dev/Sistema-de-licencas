@@ -1,6 +1,6 @@
 # Sistema de Gerenciamento de Licenças
 
-Sistema de gerenciamento de licenças de clientes usando SQLite.
+Sistema de gerenciamento de licenças de clientes em Python usando SQLite.
 
 # Como usar
 
@@ -11,5 +11,5 @@ Sistema de gerenciamento de licenças de clientes usando SQLite.
 
 # Estrutura do Banco de Dados
 
-- Tabela: LICENCAS
+- Tabela: LICENCAS 
 - Campos: ID_Licenca, Nome_Cliente, Plano, Data_Expiracao, Ativa
