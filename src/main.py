@@ -1,9 +1,13 @@
+#Biblioteca 
 import sqlite3
 
+#conexão com o banco de dados
 conexao_banco = sqlite3.connect('banco_de_dados.db')
 
+#criação do cursor
 cursor = conexao_banco.cursor()
 
+#criação da tabela LICENCAS
 cursor.execute("""CREATE TABLE LICENCAS (
 ID_Licenca integer primary key autoincrement not null,
 Nome_Cliente text not null,
@@ -12,6 +16,7 @@ Data_Expiracao text date not null,
 Ativa boolean not null
 )""")
 
+#inserindo os dados na tabela
 cursor.execute("""INSERT INTO LICENCAS (Nome_Cliente, Plano, Data_Expiracao, Ativa) VALUES
 ('cliente 1', 'Basico', '2025-12-31', 1),
 ('cliente 2', 'Premium', '2025-06-30', 1),
@@ -19,12 +24,12 @@ cursor.execute("""INSERT INTO LICENCAS (Nome_Cliente, Plano, Data_Expiracao, Ati
 ('cliente 4', 'Basico', '2024-08-15', 1),
 ('cliente 5', 'Premium', '2026-01-20', 0)""")
 
+#consultando os dados da tabela
 cursor.execute("SELECT * FROM LICENCAS")
-
 registros = cursor.fetchall()
-
 print(registros)
 
+#Organizando os dados
 for registro in registros:
     ID_Licenca, Nome_Cliente, Plano, Data_Expiracao, Ativa = registro
     print(f"ID: {ID_Licenca}, Nome: {Nome_Cliente}, Plano: {Plano}, Data Expiração: {Data_Expiracao}, Ativa: {Ativa}")
@@ -42,4 +47,5 @@ WHERE Data_Expiracao < '2025-12-15' """)
 registros = cursor.fetchall()
 print(registros)
 
+#salvando as alterações feitas
 conexao_banco.commit()
