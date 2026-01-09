@@ -2,7 +2,7 @@
 import sqlite3
 
 #conexão com o banco de dados
-conexao_banco = sqlite3.connect('banco_de_dados.db')
+conexao_banco = sqlite3.connect('src/banco_de_dados.sqlite')
 
 #criação do cursor
 cursor = conexao_banco.cursor()
