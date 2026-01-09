@@ -8,13 +8,16 @@ conexao_banco = sqlite3.connect('src/banco_de_dados.sqlite')
 cursor = conexao_banco.cursor()
 
 #criação da tabela LICENCAS
-cursor.execute("""CREATE TABLE LICENCAS (
+cursor.execute("""CREATE TABLE IF NOT EXISTS LICENCAS (
 ID_Licenca integer primary key autoincrement not null,
 Nome_Cliente text not null,
 Plano text not null,
 Data_Expiracao text date not null,
 Ativa boolean not null
 )""")
+
+#Evitar repetições
+cursor.execute("DELETE FROM LICENCAS")
 
 #inserindo os dados na tabela
 cursor.execute("""INSERT INTO LICENCAS (Nome_Cliente, Plano, Data_Expiracao, Ativa) VALUES
